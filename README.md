@@ -44,8 +44,8 @@ $ npm install
 
 ## Usage
 
-```js
-npm start
+```bash
+$ npm start
 ```
 
 Require **nforce** and **express** in your app and create a client connection to a Salesforce Remote Access Application with the `configuration.js` enabled.
@@ -207,7 +207,7 @@ After you use this application you will see there are no API calls consumed whil
 1. Posting the Chatter Feed.
 2. Interacting with Node JS application infinitely.
 
-The basic motivation behind using this application is to save the API calls and to save the File system storage of our Salesforce account. Alos, this application is serving as a module to my java application which is having a File Watcher to implement further modules of Java application. After submitting the file uploaded it will create a duplicate copy in the MyFolder with a prefix prepended with the status you typed in the status text box followed by '_'.
+The basic motivation behind using this application is to save the API calls and to save the File system storage of our Salesforce account. Also, this application is serving as a module to my java application which is having a File Watcher to implement further modules of Java application. After submitting the file uploaded it will create a duplicate copy in the MyFolder with a prefix prepended with the status you typed in the status text box followed by '_'.
 
 ## Todo
 
