@@ -53,7 +53,8 @@ app.post('/authenticate', routes.authenticate);
 ```
 
 The authenticate endpoint is invoked everytime you open / test the application in Canvas App Previewer which then throws the JSON payload like the following:
-```Sample HTTP POST request body from Salesforce
+
+```js
 {
     "userId": "005A0000000Hxu7",
     "client": {
