@@ -44,6 +44,10 @@ $ npm install
 
 ## Usage
 
+```js
+npm start
+```
+
 Require **nforce** and **express** in your app and create a client connection to a Salesforce Remote Access Application with the `configuration.js` enabled.
 
 Create a Canvas application in your Salesforce account with the home url: http://localhost:3001/authenticate. Let's name it node_1. After creating the application you will be given the client_id and client_secret which you need to fill in your configuration.js file.
