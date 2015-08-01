@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "express": "3.4.0",
-    "ejs": "*"
+    "ejs": "*",
+    "jsdom": "3.1.2"
   },
   "keywords": [
     "node",
