@@ -22,40 +22,26 @@
                 // is escaped
 //                console.log('signedRequestJson is::    '+signedRequestJson);
                 var sr = <%- signedRequestJson %>;
-//                console.log('sr is:: '+sr);
-                // Save the token
                 Sfdc.canvas.oauth.token(sr.oauthToken);
-                // Obtain the Sfdc connection here
 
-                var conn = new sf.Connection({
-                    instanceUrl : sr.client.targetOrigin,
-                    accessToken : sr.oauthToken
-                });
-                // Create a record in Java_Versions__c object with the fields 
-                conn.sobject("Java_Versions__c").create({ Name : 'My Account #1' }, function(err, ret) {
-                    if (err || !ret.success) { return console.error(err, ret); }
-                    console.log("Created record id : " + ret.id);
-                    // ...
-                });
                 // Reference the Chatter user's URL from Context.Links object.
                 var url = sr.context.links.chatterFeedsUrl + "/news/" + sr.context.user.userId + "/feed-items";
                 var body = {body: {messageSegments: [
                     {type: "Text", text: statusText }
                 ]}};
-//                console.log('body to be sent is: '+JSON.stringify(body));
-                Sfdc.canvas.client.ajax(url,
-                        {client: sr.client,
-                            method: 'POST',
-                            contentType: "application/json",
-                            data: JSON.stringify(body),
-                            success: function (data) {
-                                if (201 === data.status) {
-                                    console.log("Success");
-                                }
-                            }
-                        });
 
-                // return false;
+                Sfdc.canvas.client.ajax(url,
+                {
+                    client: sr.client,
+                    method: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify(body),
+                    success: function (data) {
+                        if (201 === data.status) {
+                            console.log("Success");
+                        }
+                    }
+                });
 
                 // Posting a record on Sync_Updates__c for FilePath\Prefix_Version_FileName.java
                 
@@ -67,7 +53,7 @@
     </script>
 </head>
 <body>
-<ul id=”foldertree”></ul> 
+<ul id=â€foldertreeâ€></ul> 
 <div class="container">
 
     <div class="jumbotron">
