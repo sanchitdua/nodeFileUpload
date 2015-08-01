@@ -20,7 +20,7 @@ exports.authenticate = function(req, res){
     var encoded_envelope = bodyArray[1];
     // console.log('the consumer secret got is:   '+bodyArray[0]);
     // console.log('the encoded_envelop got is: '+bodyArray[1]);
-    var check = crypto.createHmac("sha256", configuration.CONSUMER_SECRET).update(encoded_envelope).digest("base64");
+    var check = crypto.createHmac("sha256", process.env.SECRET;).update(encoded_envelope).digest("base64");
     // console.log('check is: '+check);
     if (check === consumerSecret) {
         var envelope = JSON.parse(new Buffer(encoded_envelope, "base64").toString("ascii"));
