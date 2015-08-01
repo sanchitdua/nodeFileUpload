@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -9,7 +8,7 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 var path = require('path');
-var $ = require('jquery'); 
+var jsdom = require("jsdom").jsdom;
 
 var sslkey = fs.readFileSync('ssl-key.pem');
 var sslcert = fs.readFileSync('ssl-cert.pem')
@@ -28,7 +27,9 @@ fs.readdir(__dirname+"/MyUploads", function (err, files) { // '/' denotes the ro
    files.forEach( function (file) {
      fs.lstat('/'+file, function(err, stats) {
        if (!err && stats.isDirectory()) { //condition for identifying folders
-          $('ul#foldertree').append('<li class="folder">'+file+'</li>');
+         jsdom.jQueryify(window, 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', function (window, jquery) {
+             window.jQuery('ul#foldertree').append('<li class="folder">'+file+'</li>');
+          });
        }
        else{
           // window.$('ul#foldertree').append('<li class="file">'+file+'</li>');
@@ -38,8 +39,6 @@ fs.readdir(__dirname+"/MyUploads", function (err, files) { // '/' denotes the ro
    });
 
 });
-
-
 
 // all environments
 app.set('port', process.env.PORT || 8443);
