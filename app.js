@@ -59,19 +59,6 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-app.get('/',function(req,res){
-    console.log('Inside app.get /');
-    fs.readFile('index.ejs',function (err, data){
-        if(data) {
-            res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
-            res.write(data);
-            res.end();
-        }
-
-    });
-
-});
-
 app.post('/authenticate', routes.authenticate);
 app.get('/authenticate', routes.upload);
 //app.get('/success', routes.success);
