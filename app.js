@@ -61,6 +61,7 @@ if ('development' == app.get('env')) {
 
 app.post('/authenticate', routes.authenticate);
 app.get('/authenticate', routes.upload);
+app.get('/users', user.list);
 //app.get('/success', routes.success);
 app.post('/upload',function(req,res)
 {
